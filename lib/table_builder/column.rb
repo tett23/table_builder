@@ -73,14 +73,7 @@ erubis = <<ERB
 <th colspan="<%=column.colsize%>" rowspan="<%=(options[:rowsize] - column.require_row_size+1).abs%>">
   <%if column.options[:sortable]%>
     <%
-      base_uri = options[:sort_base_uri]
-      regex = /^(.+)\\?(.+)$/
-      base = base_uri.gsub(regex, '\\1')
-      params = base_uri.gsub(regex, '\\2')
-      params = params.split('&').map do |item|
-        item.split('=')
-      end
-      params = Hash[*params.flatten]
+      params = options[:search_params]
       params[:sort_by] = column.options[:sort_column]
 
       if options[:sort_by].nil?

@@ -6,7 +6,7 @@ module TableBuilder
       default = {
         caption: nil,
         table_class: 'result_small',
-        sort_base_uri: '',
+        search_params: {},
         sort_by: nil,
         sort_order: :asc
       }
@@ -62,7 +62,7 @@ module TableBuilder
   <%end%>
   <tr>
     <%columns.each do |column|%>
-      <%=column.to_html(rowsize: table.header_rowsize, sort_base_uri: table.options[:sort_base_uri], sort_by: table.options[:sort_by], sort_order: table.options[:sort_order])%>
+      <%=column.to_html(rowsize: table.header_rowsize, search_params: table.options[:search_params], sort_by: table.options[:sort_by], sort_order: table.options[:sort_order])%>
     <%end%>
   </tr>
   <%columns.each do |column|%>
