@@ -1,6 +1,6 @@
 # coding: utf-8
 
-module TableBuilder
+module Iwashi
   class Table
     def initialize(options={})
       default = {
@@ -31,7 +31,7 @@ module TableBuilder
 
     def sort_by_column(column_name, order=:asc)
       column_name = column_name.to_sym
-      raise '未定義のTableBuilder::Column' unless keys.include?(column_name)
+      raise '未定義のIwashi::Column' unless keys.include?(column_name)
 
       @data.sort! do |a, b|
         next 1 if @ignore_sort.call(a)

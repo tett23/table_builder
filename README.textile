@@ -1,4 +1,4 @@
-h1. TableBuilder
+h1. Iwashi
 
 h2. Installation
 
@@ -6,7 +6,7 @@ h2. Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'table_builder'
+    gem 'iwashi'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install table_builder
+    $ gem install iwashi
 
 h2. Usage
 

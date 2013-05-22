@@ -1,6 +1,6 @@
 # coding: utf-8
 
-module TableBuilder
+module Iwashi
   class Column
     def initialize(column_name, name, options={})
       default = {

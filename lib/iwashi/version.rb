@@ -1,3 +1,3 @@
-module TableBuilder
+module Iwashi
   VERSION = "0.0.3"
 end
