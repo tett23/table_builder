@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = TableBuilder::VERSION
   gem.authors       = ["h-akabane"]
   gem.email         = ["h-akabane@moist-corp.jp"]
-  gem.description   = %q{table builder}
-  gem.summary       = %q{table builder_}
+  gem.description   = %q{テーブルだ！！}
+  gem.summary       = %q{テーブルタグかきたくない}
   gem.homepage      = "http://donuthole.org"
 
   gem.files         = `git ls-files`.split($/)
