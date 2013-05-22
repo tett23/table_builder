@@ -71,7 +71,7 @@ module TableBuilder
 
 erubis = <<ERB
 <th colspan="<%=column.colsize%>" rowspan="<%=(options[:rowsize] - column.require_row_size+1).abs%>">
-  <%if column.options[:sortable]%>
+  <%if !options[:sort_by].nil? && column.options[:sortable]%>
     <%
       base_uri = options[:sort_base_uri]
       regex = /^(.+)\\?(.+)$/
