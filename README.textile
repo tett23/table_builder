@@ -1,6 +1,8 @@
-# TableBuilder
+h1. TableBuilder
 
-## Installation
+h2. Installation
+
+テーブルタグを書かずにテーブルを吐きたい
 
 Add this line to your application's Gemfile:
 
@@ -14,9 +16,9 @@ Or install it yourself as:
 
     $ gem install table_builder
 
-## Usage
+h2. Usage
 
-## Contributing
+h2. Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
