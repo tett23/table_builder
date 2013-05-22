@@ -6,8 +6,8 @@ require 'table_builder/version'
 Gem::Specification.new do |gem|
   gem.name          = "table_builder"
   gem.version       = TableBuilder::VERSION
-  gem.authors       = ["h-akabane"]
-  gem.email         = ["h-akabane@moist-corp.jp"]
+  gem.authors       = ["tett23"]
+  gem.email         = ["tett23@gmail.com"]
   gem.description   = %q{テーブルだ！！}
   gem.summary       = %q{テーブルタグかきたくない}
   gem.homepage      = "http://donuthole.org"
