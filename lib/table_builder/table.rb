@@ -42,8 +42,8 @@ module TableBuilder
         sort_value_b = b[column_name]
 
         # 数値っぽかったら勝手に変換する
-        sort_value_a = sort_value_a.to_i if sort_value_a.match(/^[\d,]+$/)
-        sort_value_b = sort_value_b.to_i if sort_value_b.match(/^[\d,]+$/)
+        sort_value_a = sort_value_a.gsub(/,/, '').to_i if sort_value_a.match(/^[\d,]+$/)
+        sort_value_b = sort_value_b.gsub(/,/, '').to_i if sort_value_b.match(/^[\d,]+$/)
 
         if order == :asc
           cmp = sort_value_a <=> sort_value_b

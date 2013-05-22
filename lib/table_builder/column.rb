@@ -71,7 +71,7 @@ module TableBuilder
 
 erubis = <<ERB
 <th colspan="<%=column.colsize%>" rowspan="<%=(options[:rowsize] - column.require_row_size+1).abs%>">
-  <%if !options[:sort_by].nil? && column.options[:sortable]%>
+  <%if column.options[:sortable]%>
     <%
       base_uri = options[:sort_base_uri]
       regex = /^(.+)\\?(.+)$/
@@ -82,7 +82,10 @@ erubis = <<ERB
       end
       params = Hash[*params.flatten]
       params[:sort_by] = column.options[:sort_column]
-      if options[:sort_by].to_sym == column.options[:sort_column] && options[:sort_order] == 'asc'
+
+      if options[:sort_by].nil?
+        params[:sort_order] = :asc
+      elsif options[:sort_by].to_sym == column.options[:sort_column] && options[:sort_order] == 'asc'
         params[:sort_order] = :desc
       else
         params[:sort_order] = :asc
