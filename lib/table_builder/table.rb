@@ -4,6 +4,7 @@ module TableBuilder
   class Table
     def initialize(options={})
       default = {
+        caption: nil,
         table_class: 'result_small',
         sort_base_uri: '',
         sort_by: nil,
@@ -56,6 +57,9 @@ module TableBuilder
     def to_html
   erubis = <<ERB
 <table class="<%=table.options[:table_class]%>">
+  <%unless table.options[:caption].blank?%>
+    <caption><%=table.options[:caption]%></caption>
+  <%end%>
   <tr>
     <%columns.each do |column|%>
       <%=column.to_html(rowsize: table.header_rowsize, sort_base_uri: table.options[:sort_base_uri], sort_by: table.options[:sort_by], sort_order: table.options[:sort_order])%>
