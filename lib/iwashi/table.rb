@@ -13,6 +13,7 @@ module Iwashi
       @options = default.merge(options)
       @columns = []
       @data = []
+      @ignore_sort = nil
     end
     attr_reader :options, :data
     attr_accessor :columns
@@ -34,8 +35,8 @@ module Iwashi
       raise '未定義のIwashi::Column' unless keys.include?(column_name)
 
       @data.sort! do |a, b|
-        next 1 if @ignore_sort.call(a)
-        next -1 if @ignore_sort.call(b)
+        next 1 if not(@ignore_sort.nil?) && @ignore_sort.call(a)
+        next -1 if not(@ignore_sort.nil?) && @ignore_sort.call(b)
         next 1 if !a[column_name]
         next -1 if !b[column_name]
 
@@ -46,11 +47,19 @@ module Iwashi
         sort_value_a = sort_value_a.gsub(/,/, '').to_i if sort_value_a.match(/^[\d,]+$/)
         sort_value_b = sort_value_b.gsub(/,/, '').to_i if sort_value_b.match(/^[\d,]+$/)
 
-        if order == :asc
-          cmp = sort_value_a <=> sort_value_b
-        else
-          cmp = sort_value_b <=> sort_value_a
+        # 文字列と数値を比較したりするとnilが返ってきて死ぬ
+        unless sort_value_a.class == sort_value_b.class
+          sort_value_a = sort_value_a.to_s
+          sort_value_b = sort_value_b.to_s
         end
+
+        cmp = if order == :asc
+          sort_value_a <=> sort_value_b
+        else
+          sort_value_b <=> sort_value_a
+        end
+
+        cmp
       end
     end
 
