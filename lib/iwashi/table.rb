@@ -69,18 +69,20 @@ module Iwashi
   <%unless table.options[:caption].blank?%>
     <caption><%=table.options[:caption]%></caption>
   <%end%>
-  <tr>
+  <thead>
+    <tr>
+      <%columns.each do |column|%>
+        <%=column.to_html(rowsize: table.header_rowsize, search_params: table.options[:search_params], sort_by: table.options[:sort_by], sort_order: table.options[:sort_order])%>
+      <%end%>
+    </tr>
     <%columns.each do |column|%>
-      <%=column.to_html(rowsize: table.header_rowsize, search_params: table.options[:search_params], sort_by: table.options[:sort_by], sort_order: table.options[:sort_order])%>
-    <%end%>
-  </tr>
-  <%columns.each do |column|%>
-    <%if column.has_children?%>
-      <%column.children.each do |child|%>
-        <%=child.to_html%>
+      <%if column.has_children?%>
+        <%column.children.each do |child|%>
+         <%=child.to_html%>
+        <%end%>
       <%end%>
     <%end%>
-  <%end%>
+  </thead>
   <%data.each do |datum|%>
     <tr>
       <%table.keys.each do |key|%>
